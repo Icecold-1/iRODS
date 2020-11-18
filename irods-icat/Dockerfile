@@ -61,6 +61,8 @@ WORKDIR /B2SAFE-core/packaging
 
 RUN chmod +x /B2SAFE-core/packaging/create_deb_package.sh
 
+RUN ./create_deb_package.sh
+
 WORKDIR /
 
 RUN dpkg -i /debbuild/irods-eudat-b2safe_4.2.0.deb
