@@ -61,6 +61,10 @@ WORKDIR /B2SAFE-core/packaging
 
 RUN chmod +x /B2SAFE-core/packaging/create_deb_package.sh
 
+RUN groupadd -g 999 tempuser && \
+    useradd -r -u 999 -g tempuser tempuser
+USER tempuser
+
 RUN ./create_deb_package.sh
 
 WORKDIR /
