@@ -5,7 +5,10 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get -y update && apt-get -y upgrade 
 RUN apt-get -y install wget curl nano sudo gnupg2 lsb-release netcat pylint python3 python3-pip python python-pip
-RUN pip install queuelib dweepy hashlib configparser
+RUN pip install queuelib
+RUN pip install dweepy
+RUN pip install hashlib
+RUN pip install configparser
 RUN wget -qO - https://packages.irods.org/irods-signing-key.asc | sudo apt-key add - 
 RUN echo "deb [arch=amd64] https://packages.irods.org/apt/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/renci-irods.list
 RUN apt-get update -y
