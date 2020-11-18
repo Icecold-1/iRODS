@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 
+ENV TZ=Europe/Maribor
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get -y update && apt-get -y upgrade 
 RUN apt-get -y install wget curl nano sudo gnupg2 lsb-release netcat pylint python3 python3-pip python python-pip
 RUN pip install queuelib dweepy hashlib configparser
