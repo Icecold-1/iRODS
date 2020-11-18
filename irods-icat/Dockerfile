@@ -48,6 +48,7 @@ VOLUME "/etc/irods" "/var/lib/irods/iRODS/server/log" "/var/lib/irods/Vault"
 
 WORKDIR /
 
+
 RUN git clone https://github.com/EUDAT-B2SAFE/B2HANDLE
 RUN git clone https://github.com/EUDAT-B2SAFE/B2SAFE-core
 
@@ -57,21 +58,24 @@ RUN python setup.py install
 
 ## set up B2SAFE
 
-WORKDIR /B2SAFE-core/packaging
+RUN groupadd -g 999 tempuser && \
+    useradd -r -u 999 -g tempuser tempuser
+
+RUN mkdir /home/tempuser
+
+WORKDIR /home/tempuser
+
+RUN git clone https://github.com/EUDAT-B2SAFE/B2SAFE-core
+
+WORKDIR home/tempuser/B2SAFE-core/packaging
 
 RUN chmod +x /B2SAFE-core/packaging/create_deb_package.sh
 
-RUN groupadd -g 999 tempuser && \
-    useradd -r -u 999 -g tempuser tempuser
 USER tempuser
 
 RUN ./create_deb_package.sh
 
-WORKDIR /
-
-RUN dpkg -i /debbuild/irods-eudat-b2safe_4.2.0.deb
-
-
+RUN dpkg -i /home/tempuser/debbuild/irods-eudat-b2safe_4.2.0.deb
 
 ## network ports
 EXPOSE 4321 $IRODS_ZONE_PORT $IRODS_CONTROLPLANE_PORT $IRODS_DATA_PORT_RANGE_BEG-$IRODS_DATA_PORT_RANGE_END
