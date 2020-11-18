@@ -67,7 +67,7 @@ WORKDIR /home/tempuser
 
 RUN git clone https://github.com/EUDAT-B2SAFE/B2SAFE-core
 
-WORKDIR home/tempuser/B2SAFE-core/packaging
+WORKDIR /home/tempuser/B2SAFE-core/packaging
 
 RUN chmod +x /B2SAFE-core/packaging/create_deb_package.sh
 
