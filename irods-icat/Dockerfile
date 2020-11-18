@@ -77,6 +77,8 @@ USER tempuser
 
 RUN ./create_deb_package.sh
 
+USER root
+
 RUN dpkg -i /home/tempuser/debbuild/irods-eudat-b2safe_4.2.0.deb
 
 ## network ports
