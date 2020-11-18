@@ -11,7 +11,7 @@ SCHEMA_URI="/var/lib/irods/configuration_schemas"
 echo "irods" > $RESPFILE                          # service account user ID
 echo "irods" >> $RESPFILE                         # service account group ID
 echo "1"     >> $RESPFILE                         # service role: provider 
-echo "PostgreSQL" >> $RESPFILE                    # database type 
+echo "1" >> $RESPFILE                    # database type 
 echo $IRODS_ICAT_DBSERVER >> $RESPFILE            # database hostname
 echo $IRODS_ICAT_DBPORT >> $RESPFILE              # database port
 echo $IRODS_ICAT_DBNAME >> $RESPFILE              # database DB name
