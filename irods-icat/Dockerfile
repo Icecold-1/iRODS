@@ -59,7 +59,7 @@ RUN python setup.py install
 
 WORKDIR /B2SAFE-core/packaging
 
-RUN chmod +x /create_deb_package.sh
+RUN chmod +x /B2SAFE-core/packaging/create_deb_package.sh
 
 WORKDIR /
 
