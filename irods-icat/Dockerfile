@@ -4,7 +4,7 @@ ENV TZ=Europe/Ljubljana
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get -y update && apt-get -y upgrade 
-RUN apt-get -y install wget curl nano sudo gnupg2 lsb-release netcat pylint python3 python3-pip python python-pip
+RUN apt-get -y install wget curl nano sudo gnupg2 lsb-release netcat pylint python3 python3-pip python python-pip git
 RUN pip install queuelib
 RUN pip install dweepy
 RUN pip install configparser
