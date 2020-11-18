@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-ENV TZ=Europe/Maribor
+ENV TZ=Europe/Ljubljana
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get -y update && apt-get -y upgrade 
