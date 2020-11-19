@@ -6,17 +6,17 @@
 
 RESPFILE=$1
 
-SCHEMA_URI="/var/lib/irods/configuration_schemas" 
+SCHEMA_URI="file:///var/lib/irods/configuration_schemas" 
 
 echo "irods" > $RESPFILE                          # service account user ID
 echo "irods" >> $RESPFILE                         # service account group ID
 echo "1"     >> $RESPFILE                         # service role: provider 
-echo "1" >> $RESPFILE                    # database type 
+echo "1" >> $RESPFILE                    		  # database type 
 echo $IRODS_ICAT_DBSERVER >> $RESPFILE            # database hostname
 echo $IRODS_ICAT_DBPORT >> $RESPFILE              # database port
 echo $IRODS_ICAT_DBNAME >> $RESPFILE              # database DB name
 echo $IRODS_ICAT_DBUSER >> $RESPFILE              # database username
-#echo "yes" >> $RESPFILE
+echo "yes" >> $RESPFILE							  # confirm server settings
 echo $IRODS_ICAT_DBPASS >> $RESPFILE              # database password
 echo "DCCN" >> $RESPFILE                          # database password salt
 echo $IRODS_ZONE_NAME >> $RESPFILE                # zone name
@@ -26,7 +26,7 @@ echo $IRODS_DATA_PORT_RANGE_END >> $RESPFILE      # transport ending port #
 echo $IRODS_CONTROLPLANE_PORT >> $RESPFILE        # control plane port
 echo $SCHEMA_URI >> $RESPFILE                     # schema validation URI
 echo $IRODS_ADMIN_USER >> $RESPFILE               # iRODS admin account name
-#echo "yes" >> $RESPFILE                           # confirm server settings
+echo "yes" >> $RESPFILE                           # confirm server settings
 echo $IRODS_ZONE_KEY >> $RESPFILE                 # ZONE key
 echo $IRODS_NEGOTIATION_KEY >> $RESPFILE          # negotiation key
 echo $IRODS_CONTROLPLANE_KEY >> $RESPFILE         # control plane key
